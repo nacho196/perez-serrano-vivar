@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>eShop</title>
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <section class="our-publication pt-100 pb-70">
+        <div class="container">
+            <div class="section-header">
+                <i class="fa fa-book"></i>
+                <h2>Nuestros Productos</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem animi tempora quaerat rem quibusdam! Doloribus sint, placeat corporis officiis eligendi eveniet illum natus tempore, recusandae error nobis possimus eos beatae?</p>
+            </div>
+            <div class="row">
+                {% for producto in productos %}
+                <div class="col-sm-6 col-lg-3">
+                    <form method="POST" action="/add">
+                        <div class="single-publication">
+                            <figure style="width: 263px;">
+                                <a href="#">
+                                    <img src="/static/imagenes/imagenes_productos/{{ producto[4] }}" width="263px" alt="">
+                                </a>
+                                <ul>
+                                    <li><a href="#" title="Anadir a Favoritos"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#" title="Comparar"><i class="fa fa-refresh"></i></a></li>
+                                    <li><a href="#" title="Vista Previa"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </figure>
+                            <div class="publication-content">
+                                <span class="category">{{producto[1]}}</span>
+                                <h4 class="price">$ {{producto[2]}}</h4>
+                            </div>
+                            <!--Verificamos que el usuario este logueado para agregar productos al carrito sino direccionamos a login-->
+                            <div class="add-to-cart">
+                                <input type="hidden" name="code" value="{{producto.codigo}}" />
+                                <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                                <input type="submit" value="Agregar al carrito" class="default-btn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html' %}
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Header</title>
+</head>
+
+<body>
+
+
+    <div class="row align-items-center">
+        <div class="col-2">
+            <a href=" / ">
+                <img id="logo " src="/static/imagenes/logo/logo_design.JPG" width="80%">
+            </a>
+        </div>
+        <div class="col-4">
+            <input class="form-control form-control-lg" " type="text " name="searchQuery ">
+        </div>
+        <div class="col-2 ">
+            <input class="btn text-white bg-dark " " type="submit " value="Search ">
+        </div>
+        {% if not loggedIn %}
+
+        <div class="col-1 ">
+            <div id="signInButton ">
+                <a class="link " style="color: black;" href="/login">Sign In</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-1 ">
+            <div class="dropdown ">
+                <button class="dropbtn ">Hello, <br>{{firstName}}</button>
+                <div class="dropdown-content ">
+                    <a href="/account/orders ">Your orders</a>
+                    <a href="/account/profile ">Your profile</a>
+                    <hr>
+                    <a href="/logout ">Sign Out</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-1 ">
+            <img src="/static/imagenes/cart_shop.png " width="60px " id="cartIcon " />
+        </div>
+        <div class="col-1 ">
+            <a class="link" style="color: black;" href="/cart "> CART {{noOfItems}}</a>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
