@@ -41,11 +41,13 @@
                                 <h4 class="price">$ {{producto[2]}}</h4>
                             </div>
                             <!--Verificamos que el usuario este logueado para agregar productos al carrito sino direccionamos a login-->
-                            <div class="add-to-cart">
-                                <input type="hidden" name="code" value="{{producto.codigo}}" />
-                                <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
-                                <input type="submit" value="Agregar al carrito" class="default-btn" />
-                            </div>
+                            {% if session.usuario %}
+                                <div class="add-to-cart">
+                                    <input type="hidden" name="code" value="{{producto.codigo}}" />
+                                    <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                                    <input type="submit" value="Agregar al carrito" class="default-btn" />
+                                </div>
+                            {% endif %}
                         </div>
                     </form>
                 </div>
